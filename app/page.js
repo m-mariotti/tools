@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { Globe } from 'lucide-react';
+import { Globe, Sparkles } from 'lucide-react';
 import { translations } from '../locales/translations';
 import { toolsConfig, categories } from '../config/tools';
 import { useRouter } from 'next/navigation';
@@ -17,26 +17,35 @@ export default function Home() {
     : toolsConfig.filter(tool => tool.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
+      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="text-xl font-bold text-gray-800">{t.siteName}</span>
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-6 h-6 text-indigo-600" />
+            <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+              {t.siteName}
+            </span>
+          </div>
           
           <div className="flex items-center gap-3">
             <Globe className="w-5 h-5 text-gray-400" />
             <button
               onClick={() => setLanguage('en')}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${
-                language === 'en' ? 'bg-gray-800 text-white' : 'text-gray-600 hover:bg-gray-100'
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                language === 'en' 
+                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
+                  : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               EN
             </button>
             <button
               onClick={() => setLanguage('it')}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition ${
-                language === 'it' ? 'bg-gray-800 text-white' : 'text-gray-600 hover:bg-gray-100'
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
+                language === 'it' 
+                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
+                  : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
               IT
@@ -45,27 +54,35 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-3 text-center">
-          {t.welcome}
-        </h1>
-        <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto">
-          {t.subtitle}
-        </p>
+      {/* Hero Section */}
+      <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
+        <div className="text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">
+            <Sparkles className="w-4 h-4" />
+            <span>Free & Simple Tools</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+            {t.welcome}
+          </h1>
+          
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            {t.subtitle}
+          </p>
+        </div>
       </section>
 
       {/* Category Tabs */}
-      <section className="max-w-6xl mx-auto px-6 mb-8">
-        <div className="flex gap-2 overflow-x-auto pb-2">
+      <section className="max-w-6xl mx-auto px-6 mb-12">
+        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
           {categories.map(cat => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-6 py-2.5 rounded-lg font-medium whitespace-nowrap transition ${
+              className={`px-8 py-3 rounded-xl font-semibold whitespace-nowrap transition-all duration-200 ${
                 activeCategory === cat.id
-                  ? 'bg-gray-800 text-white shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                  ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-xl shadow-indigo-200 scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200 hover:border-indigo-200 hover:shadow-md'
               }`}
             >
               {t.categories[cat.key]}
@@ -76,7 +93,7 @@ export default function Home() {
 
       {/* Tools Grid */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTools.map((tool) => {
             const Icon = tool.icon;
             const toolData = t.tools[tool.id];
@@ -84,17 +101,26 @@ export default function Home() {
               <button
                 key={tool.id}
                 onClick={() => router.push(tool.path)}
-                className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 p-6 text-left group border border-gray-100 hover:border-gray-200"
+                className="bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-8 text-left group border border-gray-100 hover:border-indigo-200 hover:-translate-y-2"
               >
-                <div className={`${tool.color} w-16 h-16 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
                   <Icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
                   {toolData.name}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
                   {toolData.desc}
                 </p>
+                
+                <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span>Try it now</span>
+                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
               </button>
             );
           })}
@@ -102,7 +128,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-8">
+      <footer className="border-t border-gray-200 bg-white/50 backdrop-blur-sm py-8 mt-12">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-sm text-gray-500">
             © 2025 Tools Portal - All tools are free to use
