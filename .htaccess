@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^tools.mariottimauro.eu$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^tools.mariottimauro.eu$
+RewriteCond %{REQUEST_URI} !out/
+RewriteRule (.*) /out/$1 [L]
