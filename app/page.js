@@ -4,6 +4,7 @@ import { Globe, Sparkles } from 'lucide-react';
 import { translations } from '../locales/translations';
 import { toolsConfig, categories } from '../config/tools';
 import { useRouter } from 'next/navigation';
+import AdBanner from '../components/AdBanner';
 
 export default function Home() {
   const [language, setLanguage] = useState('en');
@@ -55,7 +56,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-12">
+      <section className="max-w-6xl mx-auto px-6 pt-16 pb-8">
         <div className="text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">
             <Sparkles className="w-4 h-4" />
@@ -70,6 +71,15 @@ export default function Home() {
             {t.subtitle}
           </p>
         </div>
+      </section>
+
+      {/* Top Banner Ad - Posizione strategica dopo l'hero */}
+      <section className="max-w-6xl mx-auto px-6 pb-8">
+        <AdBanner 
+          dataAdSlot="XXXXXXXXXX" 
+          dataAdFormat="horizontal"
+          className="min-h-[100px]"
+        />
       </section>
 
       {/* Category Tabs */}
@@ -92,39 +102,60 @@ export default function Home() {
       </section>
 
       {/* Tools Grid */}
-      <section className="max-w-6xl mx-auto px-6 pb-20">
+      <section className="max-w-6xl mx-auto px-6 pb-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredTools.map((tool) => {
+          {filteredTools.map((tool, index) => {
             const Icon = tool.icon;
             const toolData = t.tools[tool.id];
             return (
-              <button
-                key={tool.id}
-                onClick={() => router.push(tool.path)}
-                className="bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-8 text-left group border border-gray-100 hover:border-indigo-200 hover:-translate-y-2"
-              >
-                <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                  <Icon className="w-8 h-8 text-white" />
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
-                  {toolData.name}
-                </h3>
-                
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  {toolData.desc}
-                </p>
-                
-                <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span>Try it now</span>
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div>
-              </button>
+              <div key={tool.id}>
+                <button
+                  onClick={() => router.push(tool.path)}
+                  className="w-full bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-8 text-left group border border-gray-100 hover:border-indigo-200 hover:-translate-y-2"
+                >
+                  <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                    {toolData.name}
+                  </h3>
+                  
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    {toolData.desc}
+                  </p>
+                  
+                  <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span>Try it now</span>
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </button>
+
+                {/* Ad ogni 3 tools, inserisci un banner pubblicitario */}
+                {(index + 1) % 3 === 0 && (
+                  <div className="mt-8">
+                    <AdBanner 
+                      dataAdSlot="YYYYYYYYYY"
+                      dataAdFormat="rectangle"
+                      className="min-h-[250px]"
+                    />
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
+      </section>
+
+      {/* Bottom Banner Ad */}
+      <section className="max-w-6xl mx-auto px-6 pb-12">
+        <AdBanner 
+          dataAdSlot="ZZZZZZZZZZ"
+          dataAdFormat="horizontal"
+          className="min-h-[100px]"
+        />
       </section>
 
       {/* Footer */}
