@@ -1,4 +1,4 @@
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, Calculator } from 'lucide-react';
 
 export const toolsConfig = [
   {
@@ -7,11 +7,18 @@ export const toolsConfig = [
     category: 'finance',
     color: 'bg-emerald-500',
     path: '/tools/investment'
+  },
+  {
+    id: 'proportion',
+    icon: Calculator,
+    category: 'utilities',
+    color: 'bg-purple-500',
+    path: '/tools/proportion'
   }
-  // Qui aggiungerai altri tools in futuro
 ];
 
 export const categories = [
   { id: 'all', key: 'all' },
-  { id: 'finance', key: 'finance' }
+  { id: 'finance', key: 'finance' },
+  { id: 'utilities', key: 'utilities' }
 ];

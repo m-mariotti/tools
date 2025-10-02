@@ -128,24 +128,24 @@ export default function Home() {
             const Icon = tool.icon;
             const toolData = t.tools[tool.id];
             return (
-              <div key={tool.id}>
+              <div key={tool.id} className="flex">
                 <button
                   onClick={() => router.push(tool.path)}
-                  className="w-full bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-8 text-left group border border-gray-100 hover:border-indigo-200 hover:-translate-y-2"
+                  className="w-full bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 p-8 text-left group border border-gray-100 hover:border-indigo-200 hover:-translate-y-2 flex flex-col min-h-[280px]"
                 >
                   <div className={`${tool.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition-colors">
                     {toolData.name}
                   </h3>
-                  
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
                     {toolData.desc}
                   </p>
-                  
-                  <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+
+                  <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity mt-auto">
                     <span>Try it now</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

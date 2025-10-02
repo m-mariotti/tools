@@ -13,6 +13,7 @@ export const translations = {
     categories: {
       all: "All Tools",
       finance: "Finance",
+      utilities: "Utilities",
     },
     
     // Tools
@@ -20,6 +21,10 @@ export const translations = {
       investment: {
         name: "Investment Interest Calculator",
         desc: "Calculate compound interest and growth over time"
+      },
+      proportion: {
+        name: "Proportion Calculator",
+        desc: "Solve mathematical proportions and find missing values"
       }
     },
 
@@ -45,6 +50,7 @@ export const translations = {
     categories: {
       all: "Tutti gli Strumenti",
       finance: "Finanza",
+      utilities: "Utilità",
     },
     
     // Tools
@@ -52,6 +58,10 @@ export const translations = {
       investment: {
         name: "Calcolatore Interessi Investimento",
         desc: "Calcola interesse composto e crescita nel tempo"
+      },
+      proportion: {
+        name: "Calcolatore di Proporzioni",
+        desc: "Risolvi proporzioni matematiche e trova i valori mancanti"
       }
     },
 
