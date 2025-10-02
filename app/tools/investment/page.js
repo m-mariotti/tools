@@ -493,9 +493,9 @@ export default function InvestmentCalculator() {
               value={initialInvestment}
               onChange={(e) => setInitialInvestment(e.target.value)}
               placeholder={t.form.initialInvestmentPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                errors.initialInvestment 
-                  ? 'border-red-500 focus:border-red-600' 
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+                errors.initialInvestment
+                  ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
               }`}
             />
@@ -516,9 +516,9 @@ export default function InvestmentCalculator() {
               value={recurringDeposit}
               onChange={(e) => setRecurringDeposit(e.target.value)}
               placeholder={t.form.recurringDepositPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                errors.recurringDeposit 
-                  ? 'border-red-500 focus:border-red-600' 
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+                errors.recurringDeposit
+                  ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
               }`}
             />
@@ -554,9 +554,9 @@ export default function InvestmentCalculator() {
               value={interestRate}
               onChange={(e) => setInterestRate(e.target.value)}
               placeholder={t.form.interestRatePlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                errors.interestRate 
-                  ? 'border-red-500 focus:border-red-600' 
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+                errors.interestRate
+                  ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
               }`}
             />
@@ -577,9 +577,9 @@ export default function InvestmentCalculator() {
               value={years}
               onChange={(e) => setYears(e.target.value)}
               placeholder={t.form.yearsPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors ${
-                errors.years 
-                  ? 'border-red-500 focus:border-red-600' 
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+                errors.years
+                  ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
               }`}
             />
@@ -810,12 +810,12 @@ export default function InvestmentCalculator() {
 
           {/* Chart */}
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
               <h2 className="text-2xl font-bold text-gray-900">{t.results.chart.title}</h2>
               <div className="flex gap-3">
                 <button
                   onClick={exportToCSV}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center gap-2"
+                  className="flex-1 sm:flex-none px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -824,7 +824,7 @@ export default function InvestmentCalculator() {
                 </button>
                 <button
                   onClick={exportToPDF}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors flex items-center gap-2"
+                  className="flex-1 sm:flex-none px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />

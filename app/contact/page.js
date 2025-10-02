@@ -154,7 +154,7 @@ export default function ContactPage() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none placeholder:text-gray-500"
                 placeholder={t.form.namePlaceholder}
               />
             </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none placeholder:text-gray-500"
                 placeholder={t.form.emailPlaceholder}
               />
             </div>
@@ -186,7 +186,7 @@ export default function ContactPage() {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none placeholder:text-gray-500"
                 placeholder={t.form.subjectPlaceholder}
               />
             </div>
@@ -202,7 +202,7 @@ export default function ContactPage() {
                 onChange={handleChange}
                 required
                 rows="6"
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none resize-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors outline-none resize-none placeholder:text-gray-500"
                 placeholder={t.form.messagePlaceholder}
               />
             </div>
