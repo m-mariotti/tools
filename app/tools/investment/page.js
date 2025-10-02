@@ -493,7 +493,7 @@ export default function InvestmentCalculator() {
               value={initialInvestment}
               onChange={(e) => setInitialInvestment(e.target.value)}
               placeholder={t.form.initialInvestmentPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500 ${
                 errors.initialInvestment
                   ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
@@ -516,7 +516,7 @@ export default function InvestmentCalculator() {
               value={recurringDeposit}
               onChange={(e) => setRecurringDeposit(e.target.value)}
               placeholder={t.form.recurringDepositPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500 ${
                 errors.recurringDeposit
                   ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
@@ -534,7 +534,7 @@ export default function InvestmentCalculator() {
             <select
               value={frequency}
               onChange={(e) => setFrequency(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:outline-none transition-colors"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:outline-none transition-colors text-gray-900"
             >
               <option value="weekly">{t.form.frequencies.weekly}</option>
               <option value="monthly">{t.form.frequencies.monthly}</option>
@@ -554,7 +554,7 @@ export default function InvestmentCalculator() {
               value={interestRate}
               onChange={(e) => setInterestRate(e.target.value)}
               placeholder={t.form.interestRatePlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500 ${
                 errors.interestRate
                   ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
@@ -577,7 +577,7 @@ export default function InvestmentCalculator() {
               value={years}
               onChange={(e) => setYears(e.target.value)}
               placeholder={t.form.yearsPlaceholder}
-              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors placeholder:text-gray-500 ${
+              className={`w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500 ${
                 errors.years
                   ? 'border-red-500 focus:border-red-600'
                   : 'border-gray-200 focus:border-indigo-500'
@@ -637,7 +637,7 @@ export default function InvestmentCalculator() {
                   <span className="font-semibold text-gray-900">{t.results.initialInvestment}</span>
                   <span className="text-xl font-bold text-indigo-600">{formatCurrency(results.initialInvestment)}</span>
                 </div>
-                <p className="text-sm text-gray-600">{t.explanations.initialInvestment.text}</p>
+                <p className="text-sm text-gray-700">{t.explanations.initialInvestment.text}</p>
               </div>
               
               <div className="p-4 bg-indigo-50 rounded-lg border border-indigo-200">
@@ -645,7 +645,7 @@ export default function InvestmentCalculator() {
                   <span className="font-semibold text-gray-900">{t.results.totalRecurringDeposits}</span>
                   <span className="text-xl font-bold text-indigo-600">{formatCurrency(results.totalRecurringDeposits)}</span>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">{t.explanations.totalRecurringDeposits.text}</p>
+                <p className="text-sm text-gray-700 mb-2">{t.explanations.totalRecurringDeposits.text}</p>
                 <div className="bg-white rounded p-2 text-xs font-mono text-gray-700">
                   {t.explanations.totalRecurringDeposits.formula}
                 </div>
@@ -656,7 +656,7 @@ export default function InvestmentCalculator() {
                   <span className="font-semibold text-gray-900">{t.results.totalDeposits}</span>
                   <span className="text-xl font-bold text-indigo-600">{formatCurrency(results.totalDeposits)}</span>
                 </div>
-                <p className="text-sm text-gray-600 mb-2">{t.explanations.totalDeposits.text}</p>
+                <p className="text-sm text-gray-700 mb-2">{t.explanations.totalDeposits.text}</p>
                 <div className="bg-white rounded p-2 text-xs font-mono text-gray-700">
                   {t.explanations.totalDeposits.formula}
                 </div>
@@ -704,14 +704,14 @@ export default function InvestmentCalculator() {
               
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 bg-white rounded-lg">
-                  <span className="text-sm text-gray-600 block mb-1">{t.results.simpleInterest.totalInterest}</span>
+                  <span className="text-sm text-gray-700 block mb-1">{t.results.simpleInterest.totalInterest}</span>
                   <span className="text-2xl font-bold text-blue-600">{formatCurrency(results.simpleInterestTotal)}</span>
-                  <span className="text-xs text-gray-500 block mt-1">
+                  <span className="text-xs text-gray-600 block mt-1">
                     ({formatPercentage((results.simpleInterestTotal / results.totalDeposits) * 100)})
                   </span>
                 </div>
                 <div className="p-4 bg-white rounded-lg">
-                  <span className="text-sm text-gray-600 block mb-1">{t.results.simpleInterest.finalAmount}</span>
+                  <span className="text-sm text-gray-700 block mb-1">{t.results.simpleInterest.finalAmount}</span>
                   <span className="text-2xl font-bold text-blue-600">{formatCurrency(results.simpleTotal)}</span>
                 </div>
               </div>
@@ -783,14 +783,14 @@ export default function InvestmentCalculator() {
               
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4 bg-white rounded-lg">
-                  <span className="text-sm text-gray-600 block mb-1">{t.results.compoundInterest.totalInterest}</span>
+                  <span className="text-sm text-gray-700 block mb-1">{t.results.compoundInterest.totalInterest}</span>
                   <span className="text-2xl font-bold text-emerald-600">{formatCurrency(results.compoundInterestTotal)}</span>
-                  <span className="text-xs text-gray-500 block mt-1">
+                  <span className="text-xs text-gray-600 block mt-1">
                     ({formatPercentage((results.compoundInterestTotal / results.totalDeposits) * 100)})
                   </span>
                 </div>
                 <div className="p-4 bg-white rounded-lg">
-                  <span className="text-sm text-gray-600 block mb-1">{t.results.compoundInterest.finalAmount}</span>
+                  <span className="text-sm text-gray-700 block mb-1">{t.results.compoundInterest.finalAmount}</span>
                   <span className="text-2xl font-bold text-emerald-600">{formatCurrency(results.compoundTotal)}</span>
                 </div>
               </div>

@@ -190,7 +190,7 @@ export default function ProportionCalculator() {
               value={valueA}
               onChange={(e) => setValueA(e.target.value)}
               placeholder={valueA === '' ? t.calculator.placeholderUnknown : t.calculator.placeholderKnown}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors placeholder:text-gray-500"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500"
             />
           </div>
 
@@ -204,7 +204,7 @@ export default function ProportionCalculator() {
               value={valueB}
               onChange={(e) => setValueB(e.target.value)}
               placeholder={valueB === '' ? t.calculator.placeholderUnknown : t.calculator.placeholderKnown}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors placeholder:text-gray-500"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500"
             />
           </div>
 
@@ -218,7 +218,7 @@ export default function ProportionCalculator() {
               value={valueC}
               onChange={(e) => setValueC(e.target.value)}
               placeholder={valueC === '' ? t.calculator.placeholderUnknown : t.calculator.placeholderKnown}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors placeholder:text-gray-500"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500"
             />
           </div>
 
@@ -232,7 +232,7 @@ export default function ProportionCalculator() {
               value={valueD}
               onChange={(e) => setValueD(e.target.value)}
               placeholder={valueD === '' ? t.calculator.placeholderUnknown : t.calculator.placeholderKnown}
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors placeholder:text-gray-500"
+              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors text-gray-900 placeholder:text-gray-500"
             />
           </div>
         </div>
