@@ -19,6 +19,14 @@ export const translations = {
         name: "Investment Interest Calculator",
         desc: "Calculate compound interest and growth over time"
       }
+    },
+
+    // Footer
+    footer: {
+      copyright: "© 2025 Tools Portal - All tools are free to use",
+      privacyPolicy: "Privacy Policy",
+      termsOfService: "Terms of Service",
+      contact: "Contact"
     }
   },
   
@@ -42,6 +50,14 @@ export const translations = {
         name: "Calcolatore Interessi Investimento",
         desc: "Calcola interesse composto e crescita nel tempo"
       }
+    },
+
+    // Footer
+    footer: {
+      copyright: "© 2025 Portale Strumenti - Tutti gli strumenti sono gratuiti",
+      privacyPolicy: "Privacy Policy",
+      termsOfService: "Termini di Servizio",
+      contact: "Contatti"
     }
   }
 };

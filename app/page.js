@@ -5,6 +5,7 @@ import { translations } from '../locales/translations';
 import { toolsConfig, categories } from '../config/tools';
 import { useRouter } from 'next/navigation';
 import AdBanner from '../components/AdBanner';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const [language, setLanguage] = useState('en');
@@ -159,13 +160,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white/50 backdrop-blur-sm py-8 mt-12">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-sm text-gray-500">
-            © 2025 Tools Portal - All tools are free to use
-          </p>
-        </div>
-      </footer>
+      <Footer translations={t} />
     </div>
   );
 }
