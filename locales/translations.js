@@ -1,3 +1,5 @@
+import CookiePolicy from "@/app/cookie-policy/page";
+
 export const translations = {
   en: {
     // Header
@@ -26,6 +28,7 @@ export const translations = {
       copyright: "© 2025 Tools Portal - All tools are free to use",
       privacyPolicy: "Privacy Policy",
       termsOfService: "Terms of Service",
+      cookiePolicy: "Cookie Policy",
       contact: "Contact"
     }
   },
@@ -57,6 +60,7 @@ export const translations = {
       copyright: "© 2025 Portale Strumenti - Tutti gli strumenti sono gratuiti",
       privacyPolicy: "Privacy Policy",
       termsOfService: "Termini di Servizio",
+      cookiePolicy: "Cookie Policy",
       contact: "Contatti"
     }
   }

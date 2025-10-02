@@ -22,6 +22,12 @@ export default function Footer({ translations }) {
             >
               {translations.footer.termsOfService}
             </Link>
+            <Link 
+              href="/cookie-policy" 
+              className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+            >
+              {translations.footer.cookiePolicy}
+            </Link>
           </div>
         </div>
       </div>
