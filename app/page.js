@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Globe, Sparkles } from 'lucide-react';
 import { translations } from '../locales/translations';
 import { toolsConfig, categories } from '../config/tools';
@@ -11,6 +11,25 @@ export default function Home() {
   const [language, setLanguage] = useState('en');
   const [activeCategory, setActiveCategory] = useState('all');
   const router = useRouter();
+  
+  // Carica la lingua salvata al mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('siteLanguage');
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  // Funzione per cambiare lingua e salvarla
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('siteLanguage', lang);
+    
+    // Emetti evento per notificare il cambio lingua
+    window.dispatchEvent(new CustomEvent('languageChanged', { 
+      detail: { language: lang } 
+    }));
+  };
   
   const t = translations[language];
   
@@ -33,7 +52,7 @@ export default function Home() {
           <div className="flex items-center gap-3">
             <Globe className="w-5 h-5 text-gray-400" />
             <button
-              onClick={() => setLanguage('en')}
+              onClick={() => changeLanguage('en')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 language === 'en' 
                   ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
@@ -43,7 +62,7 @@ export default function Home() {
               EN
             </button>
             <button
-              onClick={() => setLanguage('it')}
+              onClick={() => changeLanguage('it')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 language === 'it' 
                   ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
