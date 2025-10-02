@@ -9,7 +9,7 @@ export default function Footer({ translations }) {
           <p className="text-sm text-gray-500">
             {translations.footer.copyright}
           </p>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-6 flex-wrap">
             <Link 
               href="/privacy-policy" 
               className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
@@ -27,6 +27,12 @@ export default function Footer({ translations }) {
               className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
             >
               {translations.footer.cookiePolicy}
+            </Link>
+            <Link 
+              href="/contact" 
+              className="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+            >
+              {translations.footer.contact}
             </Link>
           </div>
         </div>
