@@ -4,10 +4,12 @@ export const translations = {
   en: {
     // Header
     siteName: "Tools",
-    
+
     // Hero
+    badge: "Free & Simple Tools",
     welcome: "Welcome to Your Tools",
     subtitle: "Simple calculators and utilities to help you every day",
+    tryNow: "Try it now",
     
     // Categories
     categories: {
@@ -41,10 +43,12 @@ export const translations = {
   it: {
     // Header
     siteName: "Strumenti",
-    
+
     // Hero
+    badge: "Strumenti Gratuiti e Semplici",
     welcome: "Benvenuto nei Tuoi Strumenti",
     subtitle: "Calcolatori e utilità semplici per aiutarti ogni giorno",
+    tryNow: "Provalo ora",
     
     // Categories
     categories: {

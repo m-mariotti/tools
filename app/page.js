@@ -105,7 +105,7 @@ export default function Home() {
         <div className="text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">
             <Sparkles className="w-4 h-4" />
-            <span>Free & Simple Tools</span>
+            <span>{t.badge}</span>
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
@@ -183,7 +183,7 @@ export default function Home() {
                   </p>
 
                   <div className="flex items-center text-indigo-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity mt-auto">
-                    <span>Try it now</span>
+                    <span>{t.tryNow}</span>
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
