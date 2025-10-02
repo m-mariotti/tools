@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, Globe } from 'lucide-react';
 import Link from 'next/link';
 import { termsTranslations } from '../../locales/terms-translations';
@@ -8,6 +8,26 @@ import Footer from '../../components/Footer';
 
 export default function TermsOfService() {
   const [language, setLanguage] = useState('en');
+  
+  // Carica la lingua salvata
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('siteLanguage');
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+  }, []);
+
+  // Funzione per cambiare lingua
+  const changeLanguage = (lang) => {
+    setLanguage(lang);
+    localStorage.setItem('siteLanguage', lang);
+    
+    // Emetti evento per notificare il cambio lingua
+    window.dispatchEvent(new CustomEvent('languageChanged', { 
+      detail: { language: lang } 
+    }));
+  };
+  
   const t = termsTranslations[language];
   const footerT = translations[language];
 
@@ -27,7 +47,7 @@ export default function TermsOfService() {
           <div className="flex items-center gap-3">
             <Globe className="w-5 h-5 text-gray-400" />
             <button
-              onClick={() => setLanguage('en')}
+              onClick={() => changeLanguage('en')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 language === 'en' 
                   ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
@@ -37,7 +57,7 @@ export default function TermsOfService() {
               EN
             </button>
             <button
-              onClick={() => setLanguage('it')}
+              onClick={() => changeLanguage('it')}
               className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                 language === 'it' 
                   ? 'bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg shadow-indigo-200' 
