@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
     }));
   };
   
-  const t = privacyTranslations[language];
+  const t = termsTranslations[language];
   const footerT = translations[language];
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
