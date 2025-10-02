@@ -120,8 +120,8 @@ export default function Home() {
 
       {/* Top Banner Ad - Posizione strategica dopo l'hero */}
       <section className="max-w-6xl mx-auto px-6 pb-8">
-        <AdBanner 
-          dataAdSlot="XXXXXXXXXX" 
+        <AdBanner
+          dataAdSlot={process.env.NEXT_PUBLIC_BANNER_TOP}
           dataAdFormat="horizontal"
           className="min-h-[100px]"
         />
@@ -146,9 +146,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tools Grid */}
-      <section className="max-w-6xl mx-auto px-6 pb-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Main Content with Sidebar Ads */}
+      <section className="max-w-[1400px] mx-auto px-6 pb-12">
+        <div className="flex gap-6 items-start">
+          {/* Left Sidebar Ad */}
+          <aside className="hidden xl:block sticky top-24 flex-shrink-0">
+            <AdBanner
+              dataAdSlot={process.env.NEXT_PUBLIC_BANNER_LEFT}
+              dataAdFormat="vertical"
+              className="w-[160px] min-h-[600px]"
+            />
+          </aside>
+
+          {/* Tools Grid */}
+          <div className="flex-1">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTools.map((tool, index) => {
             const Icon = tool.icon;
             const toolData = t.tools[tool.id];
@@ -191,13 +203,24 @@ export default function Home() {
               </div>
             );
           })}
+            </div>
+          </div>
+
+          {/* Right Sidebar Ad */}
+          <aside className="hidden xl:block sticky top-24 flex-shrink-0">
+            <AdBanner
+              dataAdSlot={process.env.NEXT_PUBLIC_BANNER_RIGHT}
+              dataAdFormat="vertical"
+              className="w-[160px] min-h-[600px]"
+            />
+          </aside>
         </div>
       </section>
 
       {/* Bottom Banner Ad */}
       <section className="max-w-6xl mx-auto px-6 pb-12">
-        <AdBanner 
-          dataAdSlot="ZZZZZZZZZZ"
+        <AdBanner
+          dataAdSlot={process.env.NEXT_PUBLIC_BANNER_BOTTOM}
           dataAdFormat="horizontal"
           className="min-h-[100px]"
         />

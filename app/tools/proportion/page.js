@@ -188,10 +188,10 @@ export default function ProportionCalculator() {
       backText={t.backToHome}
       backHref="/"
       footerTranslations={footerT}
-      topAdSlot="1234567890"
-      leftAdSlot="2345678901"
-      rightAdSlot="3456789012"
-      bottomAdSlot="4567890123"
+      topAdSlot={process.env.NEXT_PUBLIC_BANNER_TOP}
+      leftAdSlot={process.env.NEXT_PUBLIC_BANNER_LEFT}
+      rightAdSlot={process.env.NEXT_PUBLIC_BANNER_RIGHT}
+      bottomAdSlot={process.env.NEXT_PUBLIC_BANNER_BOTTOM}
       showTopAd={true}
       showLeftAd={true}
       showRightAd={true}
