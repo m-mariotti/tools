@@ -1,0 +1,13 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mariottimauro.eu/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin/private areas (if any)
+Disallow: /api/
+Disallow: /_next/

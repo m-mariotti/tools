@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { ArrowLeft, Globe, Mail, Send, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 import { contactTranslations } from '../../locales/contact-translations';
@@ -8,6 +9,21 @@ import Footer from '../../components/Footer';
 
 export default function ContactPage() {
   const [language, setLanguage] = useState('en');
+
+  // Structured data for contact page
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Us",
+    "url": "https://mariottimauro.eu/contact",
+    "description": "Get in touch with Tools Portal. Send us your questions, feedback, or suggestions.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Tools Portal",
+      "email": "service@mariottimauro.eu",
+      "url": "https://mariottimauro.eu"
+    }
+  };
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -77,7 +93,18 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <>
+      <Head>
+        <title>Contact Us - Get in Touch | Tools Portal</title>
+        <meta name="description" content="Contact Tools Portal. Send us your questions, feedback, or suggestions. We're here to help you with our free online calculators and tools." />
+        <meta name="keywords" content="contact, support, feedback, tools portal contact, get in touch" />
+        <link rel="canonical" href="https://mariottimauro.eu/contact" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -246,5 +273,6 @@ export default function ContactPage() {
 
       <Footer translations={footerT} />
     </div>
+    </>
   );
 }

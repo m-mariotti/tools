@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { Calculator, Info, BookOpen, Lightbulb, Target } from 'lucide-react';
 import ToolPageLayout from '../../../components/ToolPageLayout';
 import { proportionTranslations } from '../../../locales/proportion-translations';
@@ -7,6 +8,28 @@ import { translations } from '../../../locales/translations';
 
 export default function ProportionCalculator() {
   const [language, setLanguage] = useState('en');
+
+  // Structured data for proportion calculator
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Proportion Calculator",
+    "url": "https://mariottimauro.eu/tools/proportion",
+    "description": "Solve mathematical proportions online. Find missing values in equations of the form a:b = c:d. Includes explanations, properties, and practical examples.",
+    "applicationCategory": "EducationalApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "featureList": [
+      "Solve proportions instantly",
+      "Step-by-step calculations",
+      "Cross-multiplication verification",
+      "Educational examples",
+      "Properties of proportions"
+    ]
+  };
 
   // Form inputs
   const [valueA, setValueA] = useState('');
@@ -144,8 +167,19 @@ export default function ProportionCalculator() {
   };
 
   return (
-    <ToolPageLayout
-      title={t.title}
+    <>
+      <Head>
+        <title>Proportion Calculator - Solve Mathematical Proportions Online | Tools Portal</title>
+        <meta name="description" content="Free online proportion calculator. Solve proportions and find missing values in equations (a:b = c:d). Includes step-by-step calculations, properties, and real-world examples." />
+        <meta name="keywords" content="proportion calculator, solve proportions, ratio calculator, cross multiplication, math calculator, proportion solver, mathematical proportions" />
+        <link rel="canonical" href="https://mariottimauro.eu/tools/proportion" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+      <ToolPageLayout
+        title={t.title}
       subtitle={t.subtitle}
       icon={Calculator}
       iconBgColor="bg-gradient-to-br from-purple-500 to-indigo-600"
@@ -411,5 +445,6 @@ export default function ProportionCalculator() {
         </ul>
       </div>
     </ToolPageLayout>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { TrendingUp, Info, Calculator, ChevronDown, ChevronUp } from 'lucide-react';
 import ToolPageLayout from '../../../components/ToolPageLayout';
 import { investmentTranslations } from '../../../locales/investment-translations';
@@ -8,6 +9,28 @@ import { useRouter } from 'next/navigation';
 
 export default function InvestmentCalculator() {
   const [language, setLanguage] = useState('en');
+
+  // Structured data for investment calculator
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Investment Interest Calculator",
+    "url": "https://mariottimauro.eu/tools/investment",
+    "description": "Calculate simple and compound interest on your investments. Free online investment calculator with recurring deposits.",
+    "applicationCategory": "FinanceApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "featureList": [
+      "Simple interest calculation",
+      "Compound interest calculation",
+      "Recurring deposits support",
+      "Interactive charts",
+      "CSV and PDF export"
+    ]
+  };
   const [showResults, setShowResults] = useState(false);
   const [showSimpleFormulaDetails, setShowSimpleFormulaDetails] = useState(false);
   const [showCompoundFormulaDetails, setShowCompoundFormulaDetails] = useState(false);
@@ -420,8 +443,19 @@ export default function InvestmentCalculator() {
   };
 
   return (
-    <ToolPageLayout
-      title={t.title}
+    <>
+      <Head>
+        <title>Investment Interest Calculator - Simple & Compound Interest | Tools Portal</title>
+        <meta name="description" content="Free online investment calculator. Calculate simple and compound interest with recurring deposits. Compare returns, visualize growth with charts, and export results to CSV or PDF." />
+        <meta name="keywords" content="investment calculator, compound interest calculator, simple interest, financial calculator, investment growth, recurring deposits, interest calculator online" />
+        <link rel="canonical" href="https://mariottimauro.eu/tools/investment" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </Head>
+      <ToolPageLayout
+        title={t.title}
       subtitle={t.subtitle}
       icon={TrendingUp}
       iconBgColor="bg-gradient-to-br from-emerald-500 to-green-600"
@@ -986,5 +1020,6 @@ export default function InvestmentCalculator() {
         </div>
       )}
     </ToolPageLayout>
+    </>
   );
 }
