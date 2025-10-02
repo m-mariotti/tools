@@ -117,14 +117,14 @@ export default function ProportionCalculator() {
       unknown = 'b';
       calculationSteps = `${a} × ${d} = b × ${c}\nb = (${a} × ${d}) / ${c}\nb = ${solution}`;
     } else if (c === null) {
-      // c = (b × a) / d
-      if (d === 0) {
+      // c = (a × d) / b
+      if (b === 0) {
         setError(t.calculator.error.divisionByZero);
         return;
       }
-      solution = (b * a) / d;
+      solution = (a * d) / b;
       unknown = 'c';
-      calculationSteps = `${a} × ${d} = ${b} × c\nc = (${b} × ${a}) / ${d}\nc = ${solution}`;
+      calculationSteps = `${a} × ${d} = ${b} × c\nc = (${a} × ${d}) / ${b}\nc = ${solution}`;
     } else if (d === null) {
       // d = (b × c) / a
       if (a === 0) {
@@ -300,26 +300,26 @@ export default function ProportionCalculator() {
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">{t.results.title}</h2>
 
-          <div className="space-y-4">
-            <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
-              <span className="text-sm font-semibold text-gray-700 block mb-2">{t.results.proportion}</span>
-              <span className="text-2xl font-bold text-purple-600">{result.proportion}</span>
+          <div className="space-y-6">
+            {/* Result - Highlighted and Large */}
+            <div className="p-8 bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-2xl border-2 border-emerald-300 shadow-lg">
+              <span className="text-sm font-semibold text-emerald-700 block mb-3 uppercase tracking-wide">{t.results.solution}</span>
+              <div className="text-3xl font-bold text-emerald-700 mb-2">{result.unknown} = {result.solution}</div>
+              <div className="text-base text-emerald-600 mt-4 font-semibold">{t.results.proportion}</div>
+              <div className="text-xl font-bold text-emerald-700 mt-2">{result.proportion}</div>
             </div>
 
-            <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-              <span className="text-sm font-semibold text-gray-700 block mb-2">{t.results.solution}</span>
-              <span className="text-2xl font-bold text-emerald-600">{result.unknown} = {result.solution}</span>
+            {/* Calculation Steps */}
+            <div className="p-6 bg-blue-50 rounded-xl border border-blue-200">
+              <span className="text-sm font-semibold text-gray-700 block mb-3">{t.results.calculation}</span>
+              <pre className="text-blue-900 font-mono text-base whitespace-pre-wrap leading-relaxed">{result.calculation}</pre>
             </div>
 
-            <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-              <span className="text-sm font-semibold text-gray-700 block mb-2">{t.results.calculation}</span>
-              <pre className="text-blue-900 font-mono text-sm whitespace-pre-wrap">{result.calculation}</pre>
-            </div>
-
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-              <span className="text-sm font-semibold text-gray-700 block mb-2">{t.results.verification}</span>
-              <pre className="text-gray-900 font-mono text-sm whitespace-pre-wrap">{result.verification}</pre>
-              <p className="text-xs text-gray-600 mt-2 italic">{t.results.explanation}</p>
+            {/* Verification */}
+            <div className="p-6 bg-gray-50 rounded-xl border border-gray-200">
+              <span className="text-sm font-semibold text-gray-700 block mb-3">{t.results.verification}</span>
+              <pre className="text-gray-900 font-mono text-base whitespace-pre-wrap leading-relaxed">{result.verification}</pre>
+              <p className="text-sm text-gray-600 mt-3 italic">{t.results.explanation}</p>
             </div>
           </div>
         </div>
