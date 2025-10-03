@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- Home Page -->
   <url>
     <loc>https://mariottimauro.eu/</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +12,7 @@
   <!-- Investment Calculator -->
   <url>
     <loc>https://mariottimauro.eu/tools/investment</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,7 +20,15 @@
   <!-- Proportion Calculator -->
   <url>
     <loc>https://mariottimauro.eu/tools/proportion</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mortgage Calculator -->
+  <url>
+    <loc>https://mariottimauro.eu/tools/mortgage</loc>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -28,7 +36,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://mariottimauro.eu/contact</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -36,7 +44,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://mariottimauro.eu/privacy-policy</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -44,7 +52,7 @@
   <!-- Terms of Service -->
   <url>
     <loc>https://mariottimauro.eu/terms-of-service</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -52,7 +60,7 @@
   <!-- Cookie Policy -->
   <url>
     <loc>https://mariottimauro.eu/cookie-policy</loc>
-    <lastmod>2025-10-02</lastmod>
+    <lastmod>2025-10-02T00:00:00+00:00</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
