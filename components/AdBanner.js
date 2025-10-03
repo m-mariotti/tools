@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-export default function AdBanner({ 
-  dataAdSlot, 
+export default function AdBanner({
+  dataAdSlot,
   dataAdFormat = 'auto',
   dataFullWidthResponsive = true,
   className = ''
@@ -12,14 +12,14 @@ export default function AdBanner({
 
   useEffect(() => {
     // Inizializza l'annuncio quando il componente si monta o cambia pagina
+    if (typeof window === 'undefined') return;
+
     try {
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
-      console.error('AdSense error:', err);
+      // Ignora errori di AdSense (es. adblock)
     }
-  }, [pathname]); // Si ricarica quando cambia pagina
+  }, [pathname]);
 
   // Non mostrare in development
   if (process.env.NODE_ENV !== 'production') {
@@ -38,7 +38,7 @@ export default function AdBanner({
       data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_ID}
       data-ad-slot={dataAdSlot}
       data-ad-format={dataAdFormat}
-      data-full-width-responsive={dataFullWidthResponsive}
+      data-full-width-responsive={dataFullWidthResponsive.toString()}
     />
   );
 }

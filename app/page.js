@@ -1,7 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { Globe, Sparkles } from 'lucide-react';
-import Head from 'next/head';
 import { translations } from '../locales/translations';
 import { toolsConfig, categories } from '../config/tools';
 import { useRouter } from 'next/navigation';
@@ -9,40 +8,31 @@ import AdBanner from '../components/AdBanner';
 import Footer from '../components/Footer';
 
 export default function Home() {
-  // Structured data for home page
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Tools Portal",
-    "url": "https://mariottimauro.eu",
-    "description": "Free online tools and calculators for investments, proportions, and more",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://mariottimauro.eu/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  };
   const [language, setLanguage] = useState('en');
   const [activeCategory, setActiveCategory] = useState('all');
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
-  
+
   // Carica la lingua salvata al mount
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('siteLanguage');
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('siteLanguage');
+      if (savedLanguage) {
+        setLanguage(savedLanguage);
+      }
     }
   }, []);
 
   // Funzione per cambiare lingua e salvarla
   const changeLanguage = (lang) => {
     setLanguage(lang);
-    localStorage.setItem('siteLanguage', lang);
-    
-    // Emetti evento per notificare il cambio lingua
-    window.dispatchEvent(new CustomEvent('languageChanged', { 
-      detail: { language: lang } 
-    }));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('siteLanguage', lang);
+      window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      }));
+    }
   };
   
   const t = translations[language];
@@ -52,18 +42,7 @@ export default function Home() {
     : toolsConfig.filter(tool => tool.category === activeCategory);
 
   return (
-    <>
-      <Head>
-        <title>Free Online Tools & Calculators | Financial & Math Tools</title>
-        <meta name="description" content="Free online tools and calculators for investments, proportions, and more. Calculate compound interest, solve mathematical proportions - all free and easy to use." />
-        <meta name="keywords" content="online calculator, free tools, investment calculator, compound interest, proportion calculator, financial tools, math calculator" />
-        <link rel="canonical" href="https://mariottimauro.eu" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -229,6 +208,5 @@ export default function Home() {
       {/* Footer */}
       <Footer translations={t} />
     </div>
-    </>
   );
 }
