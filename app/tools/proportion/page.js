@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 import { Calculator, Info, BookOpen, Lightbulb, Target } from 'lucide-react';
 import ToolPageLayout from '../../../components/ToolPageLayout';
 import { proportionTranslations } from '../../../locales/proportion-translations';
