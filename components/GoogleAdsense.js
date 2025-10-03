@@ -8,7 +8,7 @@ export default function GoogleAdsense() {
 
   // Debug: verifica che la variabile sia caricata
   const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_ID;
-  
+
   if (!adsenseId || adsenseId === 'undefined') {
     console.error('⚠️ ERRORE: NEXT_PUBLIC_ADSENSE_ID non configurato correttamente!');
     return null;
@@ -19,7 +19,7 @@ export default function GoogleAdsense() {
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseId}`}
       crossOrigin="anonymous"
-      strategy="afterInteractive"
+      strategy="beforeInteractive"
     />
   );
 }
