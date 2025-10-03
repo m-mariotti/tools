@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { Calculator, Info, BookOpen, Lightbulb, Target } from 'lucide-react';
 import ToolPageLayout from '../../../components/ToolPageLayout';
 import { proportionTranslations } from '../../../locales/proportion-translations';
@@ -8,6 +7,7 @@ import { translations } from '../../../locales/translations';
 
 export default function ProportionCalculator() {
   const [language, setLanguage] = useState('en');
+  const [mounted, setMounted] = useState(false);
 
   // Structured data for proportion calculator
   const structuredData = {
@@ -43,12 +43,17 @@ export default function ProportionCalculator() {
 
   // Carica la lingua salvata
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('siteLanguage') || 'en';
-    setLanguage(savedLanguage);
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('siteLanguage') || 'en';
+      setLanguage(savedLanguage);
+    }
   }, []);
 
   // Ascolta i cambi di lingua
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handleLanguageChange = (e) => {
       setLanguage(e.detail.language);
     };
@@ -58,10 +63,12 @@ export default function ProportionCalculator() {
 
   const changeLanguage = (lang) => {
     setLanguage(lang);
-    localStorage.setItem('siteLanguage', lang);
-    window.dispatchEvent(new CustomEvent('languageChanged', {
-      detail: { language: lang }
-    }));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('siteLanguage', lang);
+      window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      }));
+    }
   };
 
   const t = proportionTranslations[language];

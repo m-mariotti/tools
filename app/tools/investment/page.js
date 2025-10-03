@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import { TrendingUp, Info, Calculator, ChevronDown, ChevronUp } from 'lucide-react';
 import ToolPageLayout from '../../../components/ToolPageLayout';
 import { investmentTranslations } from '../../../locales/investment-translations';
@@ -9,6 +8,7 @@ import { useRouter } from 'next/navigation';
 
 export default function InvestmentCalculator() {
   const [language, setLanguage] = useState('en');
+  const [mounted, setMounted] = useState(false);
 
   // Structured data for investment calculator
   const structuredData = {
@@ -89,12 +89,17 @@ export default function InvestmentCalculator() {
   
   // Carica la lingua salvata
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('siteLanguage') || 'en';
-    setLanguage(savedLanguage);
+    setMounted(true);
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('siteLanguage') || 'en';
+      setLanguage(savedLanguage);
+    }
   }, []);
 
   // Ascolta i cambi di lingua
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handleLanguageChange = (e) => {
       setLanguage(e.detail.language);
     };
@@ -104,10 +109,12 @@ export default function InvestmentCalculator() {
 
   const changeLanguage = (lang) => {
     setLanguage(lang);
-    localStorage.setItem('siteLanguage', lang);
-    window.dispatchEvent(new CustomEvent('languageChanged', { 
-      detail: { language: lang } 
-    }));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('siteLanguage', lang);
+      window.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      }));
+    }
   };
   
   const t = investmentTranslations[language];
@@ -443,18 +450,7 @@ export default function InvestmentCalculator() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Investment Interest Calculator - Simple & Compound Interest | Tools Portal</title>
-        <meta name="description" content="Free online investment calculator. Calculate simple and compound interest with recurring deposits. Compare returns, visualize growth with charts, and export results to CSV or PDF." />
-        <meta name="keywords" content="investment calculator, compound interest calculator, simple interest, financial calculator, investment growth, recurring deposits, interest calculator online" />
-        <link rel="canonical" href="https://mariottimauro.eu/tools/investment" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </Head>
-      <ToolPageLayout
+    <ToolPageLayout
         title={t.title}
       subtitle={t.subtitle}
       icon={TrendingUp}
@@ -1020,6 +1016,5 @@ export default function InvestmentCalculator() {
         </div>
       )}
     </ToolPageLayout>
-    </>
   );
 }
