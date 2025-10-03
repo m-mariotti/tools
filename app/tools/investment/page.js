@@ -58,7 +58,6 @@ export default function InvestmentCalculator() {
   const [errors, setErrors] = useState({});
   const [results, setResults] = useState(null);
   const [chartData, setChartData] = useState([]);
-
   const t = investmentTranslations[language];
   const footerT = translations[language];
 
